@@ -33,7 +33,7 @@ from pyworkflow.utils import Environ
 CONDA_ACTIVATION_CMD_VAR = 'CONDA_ACTIVATION_CMD'
 AITOM_ENV_ACTIVATION = 'AITOM_ENV_ACTIVATION'
 
-DEFAULT_VERSION = '0.1'
+DEFAULT_VERSION = '0.0.1'
 def getAITomoEnvName(version=DEFAULT_VERSION):
     return "aitom-%s" % version
 
@@ -130,7 +130,8 @@ class Plugin(pyworkflow.em.Plugin):
         envPath = os.environ.get('PATH', "")  # keep path since conda likely in there
         installEnvVars = {'PATH': envPath} if envPath else None
         env.addPackage('aitom', version=version,
-                       url='https://github.com/pconesa/aitom/archive/V%s.tar.gz' % version,
+                       # url='https://github.com/pconesa/aitom/archive/V%s.tar.gz' % version,
+                       url='https://github.com/xulabs/aitom/archive/%s.tar.gz' % version,
                        tar='aitom-%s.tar.gz' % version,
                        commands=aitom_commands,
                        default=default,
